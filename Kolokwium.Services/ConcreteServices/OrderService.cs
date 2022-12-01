@@ -40,6 +40,11 @@ namespace Kolokwium.Services.ConcreteServices
             }
         }
 
+        public bool DeleteOrder(Expression<Func<Order, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
+
         public OrderVm GetOrder(Expression<Func<Order, bool>> filterExpression)
         {
             try

@@ -40,7 +40,33 @@ namespace Kolokwium.Services.ConcreteServices
             }
         }
 
-        public IEnumerable<AdressVm> GetAddresses(Expression<Func<Adress, bool>>? filterExpression = null)
+        public IEnumerable<AdressVm> DeleteAdress(Expression<Func<Adress, bool>> filterExpression)
+        {
+            try
+            {
+                if (filterExpression == null)
+                {
+                    throw new ArgumentNullException("Filter expression parameter is null");
+                }
+                var addressEntity = DbContext.Adresses.FirstOrDefault(filterExpression);
+
+                if (addressEntity == null)
+                {
+                    throw new ArgumentException("Incorrect filter expression");
+                }
+
+                DbContext.Adresses.Remove(addressEntity);
+                DbContext.SaveChanges();
+                return GetAdresses();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<AdressVm> GetAdresses(Expression<Func<Adress, bool>>? filterExpression = null)
         {
             try
             {

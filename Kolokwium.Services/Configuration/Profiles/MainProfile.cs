@@ -13,21 +13,21 @@ namespace Kolokwium.Services.Configuration.Profiles
             CreateMap<ProductVm, Product>();
             CreateMap<Product, ProductVm>();
 
-            // CreateMap<AddOrUpdateInvoiceVm, Invoice>();
-            // CreateMap<InvoiceVm, Invoice>();
-            // CreateMap<Invoice, InvoiceVm>();
+            CreateMap<AddOrUpdateInvoiceVm, Invoice>();
+            CreateMap<InvoiceVm, Invoice>();
+            CreateMap<Invoice, InvoiceVm>();
 
-            // CreateMap<AddOrUpdateAddressVm, Address>();
-            // CreateMap<AddressVm, Address>();
-            // CreateMap<Address, AddressVm>();
+            CreateMap<AddOrUpdateAdressVm, Adress>();
+            CreateMap<AdressVm, Adress>();
+            CreateMap<Adress, AdressVm>();
 
-            // CreateMap<AddOrUpdateOrderVm, Order>();
-            // CreateMap<OrderVm, Order>();
-            // CreateMap<Order, OrderVm>();
+            CreateMap<AddOrUpdateOrderVm, Order>();
+            CreateMap<OrderVm, Order>();
+            CreateMap<Order, OrderVm>();
 
-            // CreateMap<AddOrUpdateStoreVm, StationaryStore>();
-            // CreateMap<StoreVm, StationaryStore>();
-            // CreateMap<StationaryStore, StoreVm>();
+            CreateMap<AddOrUpdateStoreVm, StationaryStore>();
+            CreateMap<StoreVm, StationaryStore>();
+            CreateMap<StationaryStore, StoreVm>();
         }
     }
 }

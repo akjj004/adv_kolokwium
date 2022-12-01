@@ -40,6 +40,11 @@ namespace Kolokwium.Services.ConcreteServices
             }
         }
 
+        public bool DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
+
         public StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression)
         {
             try

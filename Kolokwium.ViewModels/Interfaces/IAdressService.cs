@@ -12,6 +12,7 @@ namespace Kolokwium.ViewModels.Interfaces
     {
         AdressVm AddOrUpdateAdress(AddOrUpdateAdressVm addOrUpdateAdress);
         AdressVm GetAdress(Expression<Func<Adress, bool>> filterExpression);
-        IEnumerable<AdressVm> GetAddresses(Expression<Func<Adress, bool>>? filterExpression = null);
+        IEnumerable<AdressVm> GetAdresses(Expression<Func<Adress, bool>>? filterExpression = null);
+        public IEnumerable<AdressVm> DeleteAdress(Expression<Func<Adress, bool>> filterExpression);
     }
 }

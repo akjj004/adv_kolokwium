@@ -40,6 +40,11 @@ namespace Kolokwium.Services.ConcreteServices
             }
         }
 
+        public bool DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<InvoiceVm> GetInvoices(Expression<Func<Invoice, bool>>? filterExpression = null)
         {
             try

@@ -41,6 +41,11 @@ namespace Kolokwium.Services.ConcreteServices
             }
         }
 
+        public bool DeleteProduct(Expression<Func<Product, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
+
         public ProductVm GetProduct(Expression<Func<Product, bool>> filterExpression)
         {
             try

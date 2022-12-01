@@ -13,5 +13,6 @@ namespace Kolokwium.ViewModels.Interfaces
         StoreVm AddOrUpdateStore(AddOrUpdateStoreVm addOrUpdateStore);
         StoreVm GetStore(Expression<Func<StationaryStore, bool>> filterExpression);
         IEnumerable<StoreVm> GetStores(Expression<Func<StationaryStore, bool>>? filterExpression = null);
+        bool DeleteStore(Expression<Func<StationaryStore, bool>> filterExpression);
     }
 }
