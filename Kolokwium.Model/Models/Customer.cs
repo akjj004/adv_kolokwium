@@ -12,13 +12,13 @@ namespace Kolokwium.Model.Models
     // Remember to add ? nullabe on Adress
     public class Customer : User
     {
-        public virtual ICollection<Adress> Adresses { get; set; } = default!;
+        public virtual ICollection<Address> Adresses { get; set; } = default!;
         public virtual ICollection<Order> Orders { get; set; } = default!;
         [ForeignKey("BillingAddresId")]
-        public virtual Adress? BillingAddres { get; set; }
+        public virtual Address? BillingAddres { get; set; }
         public int? BillingAddresId { get; set; }
         [ForeignKey("ShippingAddressId")]
-        public virtual Adress? ShippingAddress { get; set; }
+        public virtual Address? ShippingAddress { get; set; }
         public int? ShippingAddressId { get; set; }
     }
 }

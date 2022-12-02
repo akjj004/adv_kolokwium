@@ -22,13 +22,13 @@ namespace Kolokwium.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Kolokwium.Model.Models.Adress", b =>
+            modelBuilder.Entity("Kolokwium.Model.Models.Address", b =>
                 {
-                    b.Property<int>("AdressId")
+                    b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdressId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressId"), 1L, 1);
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -47,11 +47,11 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<int>("StreetNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("AdressId");
+                    b.HasKey("AddressId");
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Adresses");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Kolokwium.Model.Models.Category", b =>
@@ -108,7 +108,7 @@ namespace Kolokwium.DAL.Migrations
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Invoiceid")
+                    b.Property<int>("InvoiceId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
@@ -127,7 +127,7 @@ namespace Kolokwium.DAL.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.HasIndex("Invoiceid");
+                    b.HasIndex("InvoiceId");
 
                     b.HasIndex("StationaryStoreId");
 
@@ -222,7 +222,7 @@ namespace Kolokwium.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationaryStoreId"), 1L, 1);
 
-                    b.Property<int?>("AdressId")
+                    b.Property<int?>("AdressAddressId")
                         .HasColumnType("int");
 
                     b.Property<int>("AgreementNumber")
@@ -230,7 +230,7 @@ namespace Kolokwium.DAL.Migrations
 
                     b.HasKey("StationaryStoreId");
 
-                    b.HasIndex("AdressId");
+                    b.HasIndex("AdressAddressId");
 
                     b.ToTable("StationaryStores");
                 });
@@ -501,7 +501,7 @@ namespace Kolokwium.DAL.Migrations
                     b.HasDiscriminator().HasValue(2);
                 });
 
-            modelBuilder.Entity("Kolokwium.Model.Models.Adress", b =>
+            modelBuilder.Entity("Kolokwium.Model.Models.Address", b =>
                 {
                     b.HasOne("Kolokwium.Model.Models.Customer", null)
                         .WithMany("Adresses")
@@ -518,7 +518,7 @@ namespace Kolokwium.DAL.Migrations
 
                     b.HasOne("Kolokwium.Model.Models.Invoice", "Invoice")
                         .WithMany("Order")
-                        .HasForeignKey("Invoiceid")
+                        .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -580,9 +580,9 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.StationaryStore", b =>
                 {
-                    b.HasOne("Kolokwium.Model.Models.Adress", "Adress")
+                    b.HasOne("Kolokwium.Model.Models.Address", "Adress")
                         .WithMany()
-                        .HasForeignKey("AdressId");
+                        .HasForeignKey("AdressAddressId");
 
                     b.Navigation("Adress");
                 });
@@ -640,11 +640,11 @@ namespace Kolokwium.DAL.Migrations
 
             modelBuilder.Entity("Kolokwium.Model.Models.Customer", b =>
                 {
-                    b.HasOne("Kolokwium.Model.Models.Adress", "BillingAddres")
+                    b.HasOne("Kolokwium.Model.Models.Address", "BillingAddres")
                         .WithMany()
                         .HasForeignKey("BillingAddresId");
 
-                    b.HasOne("Kolokwium.Model.Models.Adress", "ShippingAddress")
+                    b.HasOne("Kolokwium.Model.Models.Address", "ShippingAddress")
                         .WithMany()
                         .HasForeignKey("ShippingAddressId");
 

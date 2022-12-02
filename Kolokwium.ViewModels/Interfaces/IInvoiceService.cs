@@ -11,7 +11,7 @@ namespace Kolokwium.ViewModels.Interfaces
     public interface IInvoiceService
     {
         InvoiceVm AddOrUpdateInvoice(AddOrUpdateInvoiceVm addOrUpdateInvoice);
-        InvoiceVm GetInvoiceVm(Expression<Func<Invoice, bool>> filterExpression);
+        InvoiceVm GetInvoice(Expression<Func<Invoice, bool>> filterExpression);
         IEnumerable<InvoiceVm> GetInvoices(Expression<Func<Invoice, bool>>? filterExpression = null);
         bool DeleteInvoice(Expression<Func<Invoice, bool>> filterExpression);
     }

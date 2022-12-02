@@ -74,10 +74,10 @@ namespace Kolokwium.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Adresses",
+                name: "Addresses",
                 columns: table => new
                 {
-                    AdressId = table.Column<int>(type: "int", nullable: false)
+                    AddressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StreetName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StreetNumber = table.Column<int>(type: "int", nullable: false),
@@ -87,7 +87,7 @@ namespace Kolokwium.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Adresses", x => x.AdressId);
+                    table.PrimaryKey("PK_Addresses", x => x.AddressId);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,17 +96,17 @@ namespace Kolokwium.DAL.Migrations
                 {
                     StationaryStoreId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AdressId = table.Column<int>(type: "int", nullable: true),
+                    AdressAddressId = table.Column<int>(type: "int", nullable: true),
                     AgreementNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StationaryStores", x => x.StationaryStoreId);
                     table.ForeignKey(
-                        name: "FK_StationaryStores_Adresses_AdressId",
-                        column: x => x.AdressId,
-                        principalTable: "Adresses",
-                        principalColumn: "AdressId");
+                        name: "FK_StationaryStores_Addresses_AdressAddressId",
+                        column: x => x.AdressAddressId,
+                        principalTable: "Addresses",
+                        principalColumn: "AddressId");
                 });
 
             migrationBuilder.CreateTable(
@@ -145,15 +145,15 @@ namespace Kolokwium.DAL.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Adresses_BillingAddresId",
+                        name: "FK_AspNetUsers_Addresses_BillingAddresId",
                         column: x => x.BillingAddresId,
-                        principalTable: "Adresses",
-                        principalColumn: "AdressId");
+                        principalTable: "Addresses",
+                        principalColumn: "AddressId");
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Adresses_ShippingAddressId",
+                        name: "FK_AspNetUsers_Addresses_ShippingAddressId",
                         column: x => x.ShippingAddressId,
-                        principalTable: "Adresses",
-                        principalColumn: "AdressId");
+                        principalTable: "Addresses",
+                        principalColumn: "AddressId");
                     table.ForeignKey(
                         name: "FK_AspNetUsers_StationaryStores_StationaryStoreId",
                         column: x => x.StationaryStoreId,
@@ -258,7 +258,7 @@ namespace Kolokwium.DAL.Migrations
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TrackingNumber = table.Column<long>(type: "bigint", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
-                    Invoiceid = table.Column<int>(type: "int", nullable: false),
+                    InvoiceId = table.Column<int>(type: "int", nullable: false),
                     StationaryStoreId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -271,8 +271,8 @@ namespace Kolokwium.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Invoices_Invoiceid",
-                        column: x => x.Invoiceid,
+                        name: "FK_Orders_Invoices_InvoiceId",
+                        column: x => x.InvoiceId,
                         principalTable: "Invoices",
                         principalColumn: "InvoiceId",
                         onDelete: ReferentialAction.Cascade);
@@ -360,8 +360,8 @@ namespace Kolokwium.DAL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Adresses_CustomerId",
-                table: "Adresses",
+                name: "IX_Addresses_CustomerId",
+                table: "Addresses",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
@@ -429,9 +429,9 @@ namespace Kolokwium.DAL.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_Invoiceid",
+                name: "IX_Orders_InvoiceId",
                 table: "Orders",
-                column: "Invoiceid");
+                column: "InvoiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_StationaryStoreId",
@@ -454,13 +454,13 @@ namespace Kolokwium.DAL.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StationaryStores_AdressId",
+                name: "IX_StationaryStores_AdressAddressId",
                 table: "StationaryStores",
-                column: "AdressId");
+                column: "AdressAddressId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Adresses_AspNetUsers_CustomerId",
-                table: "Adresses",
+                name: "FK_Addresses_AspNetUsers_CustomerId",
+                table: "Addresses",
                 column: "CustomerId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id");
@@ -469,8 +469,8 @@ namespace Kolokwium.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Adresses_AspNetUsers_CustomerId",
-                table: "Adresses");
+                name: "FK_Addresses_AspNetUsers_CustomerId",
+                table: "Addresses");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -515,7 +515,7 @@ namespace Kolokwium.DAL.Migrations
                 name: "StationaryStores");
 
             migrationBuilder.DropTable(
-                name: "Adresses");
+                name: "Addresses");
         }
     }
 }

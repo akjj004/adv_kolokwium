@@ -12,9 +12,9 @@ namespace Kolokwium.Web.Controllers
     public class AddressApiContorller : BaseController
     {
 
-        private readonly IAdressService _addressService;
+        private readonly IAddressService _addressService;
 
-        public AddressApiContorller(ILogger logger, IMapper mapper, IAdressService addressService)
+        public AddressApiContorller(ILogger logger, IMapper mapper, IAddressService addressService)
         : base(logger, mapper)
         {
             _addressService = addressService;
@@ -25,13 +25,13 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var addresses = _addressService.GetAdresses();
+                var addresses = _addressService.GetAddresses();
                 return Ok(addresses);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, ex.Message);
-                return StatusCode(500, "Error present");
+                return StatusCode(500, "Error Get Adresses");
             }
         }
 
@@ -40,29 +40,29 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var address = _addressService.GetAdress(a => a.AdressId == id);
+                var address = _addressService.GetAddress(a => a.AddressId == id);
                 return Ok(address);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, ex.Message);
-                return StatusCode(500, "Error present");
+                return StatusCode(500, "Error Get Address");
             }
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] AddOrUpdateAdressVm addOrUpdateAddressVm)
+        public IActionResult Put([FromBody] AddOrUpdateAddressVm addOrUpdateAddressVm)
         {
             return PostOrPutHelper(addOrUpdateAddressVm);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] AddOrUpdateAdressVm addOrUpdateAddressVm)
+        public IActionResult Post([FromBody] AddOrUpdateAddressVm addOrUpdateAddressVm)
         {
             return PostOrPutHelper(addOrUpdateAddressVm);
         }
 
-        private IActionResult PostOrPutHelper(AddOrUpdateAdressVm addOrUpdateAdressVm)
+        private IActionResult PostOrPutHelper(AddOrUpdateAddressVm addOrUpdateAdressVm)
         {
             try
             {
@@ -70,12 +70,12 @@ namespace Kolokwium.Web.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-                return Ok(_addressService.AddOrUpdateAdress(addOrUpdateAdressVm));
+                return Ok(_addressService.AddOrUpdateAddress(addOrUpdateAdressVm));
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, ex.Message);
-                return StatusCode(500, "Error present");
+                return StatusCode(500, "Error Put Helper");
             }
         }
 
@@ -84,13 +84,13 @@ namespace Kolokwium.Web.Controllers
         {
             try
             {
-                var result = _addressService.DeleteAdress(a => a.AdressId == id);
+                var result = _addressService.DeleteAdress(a => a.AddressId == id);
                 return Ok(result);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, ex.Message);
-                return StatusCode(500, "Error present");
+                return StatusCode(500, "Error Delete");
             }
         }
 

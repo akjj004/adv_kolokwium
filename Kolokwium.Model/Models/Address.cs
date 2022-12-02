@@ -8,10 +8,10 @@ namespace Kolokwium.Model.Models
 {
     // Adress 
     // Should have an name number city, postcode
-    public class Adress
+    public class Address
     {
         [Key]
-        public int AdressId { get; set; }
+        public int AddressId { get; set; }
         public string StreetName { get; set; } = default!;
         public int StreetNumber { get; set; }
         public string City { get; set; } = default!;

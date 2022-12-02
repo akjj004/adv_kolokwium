@@ -10,10 +10,10 @@ namespace Kolokwium.ViewModels.VM
     {
         public int? Id { get; set; }
         [Required]
-        public int invoiceID { get; set; }
+        public int InvoiceId { get; set; }
         [Required]
-        public decimal totalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
         [Required]
-        public DateTime invoiceDate { get; set; }
+        public DateTime InvoiceDate { get; set; }
     }
 }

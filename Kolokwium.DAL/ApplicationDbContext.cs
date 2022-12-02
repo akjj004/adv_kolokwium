@@ -48,7 +48,7 @@ namespace Kolokwium.DAL
             .HasValue<StationaryStoreEmployee>(3);
         }
 
-        public virtual DbSet<Adress> Adresses { get; set; } = default!;
+        public virtual DbSet<Address> Addresses { get; set; } = default!;
         public virtual DbSet<Category> Categories { get; set; } = default!;
         public virtual DbSet<Invoice> Invoices { get; set; } = default!;
         public virtual DbSet<Order> Orders { get; set; } = default!;

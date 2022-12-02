@@ -7,7 +7,7 @@ namespace Kolokwium.ViewModels.VM
 {
     public class InvoiceVm
     {
-        public decimal totalPrice { get; set; }
-        public DateTime invoiceDate { get; set; }
+        public decimal TotalPrice { get; set; }
+        public DateTime InvoiceDate { get; set; }
     }
 }

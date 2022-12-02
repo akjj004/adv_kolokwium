@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Kolokwium.ViewModels.VM
 {
-    public class AdressVm
+    public class AddressVm
     {
         public string StreetName { get; set; } = default!;
-        public int StreetNumber { get; set; } = default!;
+        public int StreetNumber { get; set; }
         public string City { get; set; } = default!;
-        public int PostCode { get; set; } = default!;
+        public int PostCode { get; set; }
     }
 }

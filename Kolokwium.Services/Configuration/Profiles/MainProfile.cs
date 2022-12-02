@@ -17,9 +17,9 @@ namespace Kolokwium.Services.Configuration.Profiles
             CreateMap<InvoiceVm, Invoice>();
             CreateMap<Invoice, InvoiceVm>();
 
-            CreateMap<AddOrUpdateAdressVm, Adress>();
-            CreateMap<AdressVm, Adress>();
-            CreateMap<Adress, AdressVm>();
+            CreateMap<AddOrUpdateAddressVm, Address>();
+            CreateMap<AddressVm, Address>();
+            CreateMap<Address, AddressVm>();
 
             CreateMap<AddOrUpdateOrderVm, Order>();
             CreateMap<OrderVm, Order>();

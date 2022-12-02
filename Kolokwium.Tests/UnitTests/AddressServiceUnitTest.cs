@@ -1,85 +1,77 @@
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Threading.Tasks;
-// using Kolokwium.DAL;
-// using Kolokwium.ViewModels.Interfaces;
-// using Kolokwium.ViewModels.VM;
-// using Xunit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Kolokwium.DAL;
+using Kolokwium.ViewModels.Interfaces;
+using Kolokwium.ViewModels.VM;
+using Xunit;
 
-// namespace Kolokwium.Tests.UnitTests
-// {
-//     public class AddressServiceUnitTest : BaseUnitTests
-//     {
-//         // add filed
-//         private readonly IAdressService _adressService;
-//         public AddressServiceUnitTest(ApplicationDbContext dbContext, IAdressService adressService) : base(dbContext)
-//         {
-//             _adressService = adressService;
-//         }
+namespace Kolokwium.Tests.UnitTests
+{
+    // impl field
+    
+    public class AddressServiceUnitTest : BaseUnitTests
+    {
+        private readonly IAddressService _addressService;
+        public AddressServiceUnitTest(ApplicationDbContext dbContext, IAddressService addressService) : base(dbContext)
+        {
+            _addressService = addressService;
+        }
 
-//         [Fact]
-//         public void GetAddressTest()
-//         {
+        [Fact]
+        public void GetAdressTest()
+        {
+           var adress = _addressService.GetAddress(a => a.StreetName == "test");
+           Assert.NotNull(adress);
+        }
+         [Fact] 
+        public void GetMultipleAddressTest () { 
+            var addresses = _addressService.GetAddresses (a => a.AddressId >= 1 && a.AddressId <= 2); 
+            Assert.NotNull (addresses); 
+            Assert.NotEmpty (addresses); 
+            Assert.Equal (2, addresses.Count ()); 
+        } 
 
-//             var address = _adressService.GetAdress(c => c.City == "Markqo");
-//             Assert.NotNull(address);
-//         }
+        [Fact] 
+        
+        public void GetAllAddressTest () { 
+            var addresses = _addressService.GetAddresses (); 
+            Assert.NotNull (addresses); 
+            Assert.NotEmpty (addresses); 
+            Assert.Equal (addresses.Count (), addresses.Count ()); 
+        } 
+        
+        [Fact] 
+        
+        public void AddNewAddressTest () { 
+            var newAddressVm = new AddOrUpdateAddressVm () { 
+                Id = 1,
+                StreetName = "test",
+                StreetNumber = 12,
+                City = "test",
+                PostCode = 98300
+            }; 
+                var createdAddress = _addressService.AddOrUpdateAddress (newAddressVm); 
+                Assert.NotNull (createdAddress); 
+                Assert.Equal ("test", createdAddress.StreetName); 
+                
+        }
 
-//         // [Fact]
-//         // public void GetMultipleAddressTest()
-//         // {
-//         //     var addresses = _adressService.GetAdresses(a => a.AdressId >= 1 && a.AdressId <= 2);
-//         //     Assert.NotNull(addresses);
-//         //     Assert.NotEmpty(addresses);
-//         //     Assert.Equal(2, addresses.Count());
-//         // }
+        [Fact]
 
-//         // [Fact]
-//         // public void GetAllAddressTest()
-//         // {
-//         //     var addresses = _adressService.GetAdresses();
-//         //     Assert.NotNull(addresses);
-//         //     Assert.NotEmpty(addresses);
-//         //     Assert.Equal(addresses.Count(), addresses.Count());
-//         // }
-
-//         // [Fact]
-//         // public void AddNewAddressTest()
-//         // {
-//         //     var newAddressVm = new AddOrUpdateAdressVm
-//         //     {
-//         //         City = "Monahium",
-//         //         StreetName = "Shaise",
-//         //         PostCode = "93821"
-//         //     };
-//         //     var createAddress = _adressService.AddOrUpdateAdress(newAddressVm);
-//         //     Assert.NotNull(createAddress);
-//         //     Assert.Equal("Shaise", createAddress.StreetName);
-//         // }
-
-//         // [Fact]
-//         // public void UpdateAddressTest()
-//         // {
-//         //     var updateAddressVm = new AddOrUpdateAdressVm()
-//         //     {
-//         //         Id = 2,
-//         //         City = "Ludz",
-//         //         StreetName = "Piracka",
-//         //         PostCode = "85612"
-//         //     };
-
-//         //     var editedAddressVm = _adressService.AddOrUpdateAdress(updateAddressVm);
-//         //     Assert.NotNull(editedAddressVm);
-//         //     Assert.Equal(85612, editedAddressVm.PostCode);
-//         // }
-
-//         // [Fact]
-//         // public void DeleteAddressTest()
-//         // {
-//         //     var changeAddresses = _adressService.DeleteAdress(a => a.AdressId == 1);
-//         //     Assert.Equal(1, changeAddresses.Count());
-//         // }
-
-//     }
-// }
+        public void UpdateAddressTest () { 
+            var updateAddressVm = new AddOrUpdateAddressVm () { 
+                Id = 1,
+                StreetName = "test",
+                StreetNumber = 23,
+                City = "test",
+                PostCode = 98300
+            }; 
+            var editedAddressVm = _addressService.AddOrUpdateAddress (updateAddressVm); 
+            Assert.NotNull (editedAddressVm); 
+            Assert.Equal ("test", editedAddressVm.StreetName); 
+            Assert.Equal (23, editedAddressVm.StreetNumber); 
+        } 
+    }
+}

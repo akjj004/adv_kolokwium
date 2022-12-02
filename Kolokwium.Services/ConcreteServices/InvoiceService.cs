@@ -24,11 +24,12 @@ namespace Kolokwium.Services.ConcreteServices
             {
                 if (addOrUpdateInvoiceVm == null)
                     throw new ArgumentNullException("View model parameter is null");
-                var invoiceEntity = Mapper.Map<Order>(addOrUpdateInvoiceVm);
+                var invoiceEntity = Mapper.Map<Invoice>(addOrUpdateInvoiceVm);
                 if (addOrUpdateInvoiceVm.Id.HasValue || addOrUpdateInvoiceVm.Id == 0)
-                    DbContext.Orders.Update(invoiceEntity);
+                    DbContext.
+                    Invoices.Update(invoiceEntity);
                 else
-                    DbContext.Orders.Add(invoiceEntity);
+                    DbContext.Invoices.Add(invoiceEntity);
                 DbContext.SaveChanges();
                 var invoiceVm = Mapper.Map<InvoiceVm>(invoiceEntity);
                 return invoiceVm;
@@ -62,7 +63,7 @@ namespace Kolokwium.Services.ConcreteServices
             }
         }
 
-        public InvoiceVm GetInvoiceVm(Expression<Func<Invoice, bool>> filterExpression)
+        public InvoiceVm GetInvoice(Expression<Func<Invoice, bool>> filterExpression)
         {
             try
             {

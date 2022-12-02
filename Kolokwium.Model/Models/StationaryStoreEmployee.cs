@@ -20,6 +20,7 @@ namespace Kolokwium.Model.Models
         public int AgreementNumber { get; set; }
         public DateTime EmploymeentDate { get; set; }
         public string Position { get; set; } = default!;
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Salary { get; set; }
         // one to many id fk and nav
         [ForeignKey("StationaryStoreId")]

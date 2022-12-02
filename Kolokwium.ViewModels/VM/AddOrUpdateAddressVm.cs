@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kolokwium.ViewModels.VM
 {
-    public class AddOrUpdateAdressVm
+    public class AddOrUpdateAddressVm
     {
         public int? Id { get; set; }
         [Required]
@@ -16,6 +16,6 @@ namespace Kolokwium.ViewModels.VM
         [Required]
         public string City { get; set; } = default!;
         [Required]
-        public string PostCode { get; set; } = default!;
+        public int PostCode { get; set; } = default!;
     }
 }

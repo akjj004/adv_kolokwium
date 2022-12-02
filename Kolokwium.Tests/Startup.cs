@@ -31,6 +31,10 @@ namespace Kolokwium.Tests
         .AddEntityFrameworkStores<ApplicationDbContext>();
             // service binding
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IStoreService, StoreService>();
             services.AddTransient(typeof(ILogger), typeof(Logger<Startup>));
 
             services.SeedData();

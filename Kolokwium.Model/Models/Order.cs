@@ -18,8 +18,8 @@ namespace Kolokwium.Model.Models
         [ForeignKey("CustomerId")]
         public int CustomerId { get; set; }
         public virtual Customer? Customer { get; set; }
-        [ForeignKey("Invoice")]
-        public int Invoiceid { get; set; } = default!;
+        [ForeignKey("InvoiceId")]
+        public int InvoiceId { get; set; } = default!;
         public virtual Invoice? Invoice { get; set; }
         // one to many OrderProduct
         public virtual ICollection<OrderProduct>? OrderProducts { get; set; }
