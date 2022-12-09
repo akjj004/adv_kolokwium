@@ -1,34 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace Kolokwium.Model.Models
 {
-    // will add the Category FK
-    // 
     public class Product
     {
-        [Key]
-        public int ProductId { get; set; }
-        [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; } = default!;
-        public string Description { get; set; } = default!;
-        public byte[] ImageBytes { get; set; } = default!;
-        public string Name { get; set; } = default!;
-
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Price { get; set; }
-        public virtual Supplier? Supplier { get; set; }
-        [ForeignKey("SupplierId")]
-        public int SupplierId { get; set; }
-        public float Weight { get; set; }
-
-        // one to many ProductStock
-        public virtual ICollection<ProductStock>? ProductStocks { get; set; }
-        // one to many OrderProduct
-        public virtual ICollection<OrderProduct>? OrderProducts { get; set; }
+        public int ProductId { get; set; } // primary key
+        [Required]
+        [StringLength(40)]
+        public string ProductName { get; set; } = null!;
+        [Column("UnitPrice", TypeName = "money")]
+        public decimal? Cost { get; set; } // property name != column name
+        [Column("UnitsInStock")]
+        public short? Stock { get; set; }
+        public bool Discontinued { get; set; }
+        // these two define the foreign key relationship
+        // to the Categories table
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; } = null!;
     }
 }
